@@ -105,3 +105,6 @@ dist
 
 # Exclude uofm folder
 uofm
+
+# Exclude package-lock.json
+package-lock.json
