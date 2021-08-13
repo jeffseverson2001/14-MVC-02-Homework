@@ -3,13 +3,13 @@ const { Blog, Comment } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-        const blogData = await Blog.findAll({
+        const commentData = await Comment.findAll({
             order: [
                 ['date_created', 'DESC'],
             ],
         });
 
-        res.status(200).json(blogData);
+        res.status(200).json(commentData);
 
     } catch (err) {
         res.status(400).json(err);

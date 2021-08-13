@@ -1,0 +1,22 @@
+[
+    {
+        "title": "First Blog",
+        "content": "This is the first blog entered into this blog"
+    },
+    {
+        "title": "Second Blog",
+        "content": "The second blog has been entered !!!"
+    },
+    {
+        "title": "Cats Are Crazy",
+        "content": "I wonder why cats are so crazy?"
+    },
+    {
+        "title": "Dogs Are The Best",
+        "content": "Dogs are better than cats.  Accept it."
+    },
+    {
+        "title": "Computers Right?",
+        "content": "Computers are just not that great."
+    }
+]
