@@ -14,6 +14,10 @@ Comment.init(
         comment: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                notNull: true,
+                notEmpty: true,
+            },
         },
         date_created: {
             type: DataTypes.DATE,

@@ -14,10 +14,18 @@ Blog.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: true,
+        notEmpty: true,
+      },
     },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: true,
+        notEmpty: true,
+      },
     },
     date_created: {
       type: DataTypes.DATE,
