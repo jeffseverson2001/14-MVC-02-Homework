@@ -22,10 +22,10 @@
       <div class="headerStrong">jBlog</div>
     </div>
     <div class="navbar-end">
-      {{#if loggedIn}}
+      {{#if logged_in}}
       <a href="/" class="navbar-item has-text-dark">Homepage</a>
       <a href="/blog" class="navbar-item has-text-dark">jBlog</a>
-      <a href="/logout" class="navbar-item has-text-dark">Logout</a>
+      <a href="/" class="navbar-item has-text-dark" id="logout-form">Logout</a>
       {{else}}
       <a href="/" class="navbar-item has-text-dark">Homepage</a>
       <a href="/login" class="navbar-item has-text-dark">Login</a>
@@ -44,10 +44,11 @@
   <div class="container">
     <div class="content has-text-centered has-text-light">
       <p>
-        <a href="/">Homepage</a>{{#if loggedIn}} |
-        <a href="/dashboard/">Dashboard</a> |
+        <a href="/">Homepage</a>{{#if logged_in}} |
+        <!-- <a href="/" id="logout-form">Logout</a> | -->
+        <a href="/blog">jBlog</a>
         {{else}}
-        | <a href="/login/">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </p>
     </div>
@@ -63,8 +64,8 @@
 </footer>
 </div>
 
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
 {{/if}}
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

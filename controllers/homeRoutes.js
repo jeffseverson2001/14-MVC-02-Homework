@@ -58,10 +58,10 @@ router.get('/blog/:id', async (req, res) => {
 */
 
 router.get('/signup', (req, res) => {
-    //if (req.session.logged_in) {
-    //    res.redirect('/homepage');
-    //    return;
-    //}
+    if (req.session.logged_in) {
+        res.redirect('homepage');
+        return;
+    }
     res.render('signup');
 });
 
@@ -69,10 +69,23 @@ router.get('/signup', (req, res) => {
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
-        res.redirect('/homepage');
+        res.redirect('homepage');
         return;
     }
     res.render('login');
 });
+
+
+/*
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+*/
 
 module.exports = router;
