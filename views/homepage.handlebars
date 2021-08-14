@@ -1,0 +1,23 @@
+<!-- Loop over each object in the blog array -->
+
+{{#each blogs as |blog| }}
+<div class="container">
+    <div class="box mx-4 my-2">
+        <div class="box strongBlue has-background-grey-light px-4 py-2">
+            <div class="level">
+                <span class="level-left">
+                    <a href="/blog/{{blog.id}}">{{blog.title}}</a>
+                </span>
+                <span class="level-right">
+                    Created by {{blog.user.username}} on {{format_date blog.date_created}}
+                </span>
+            </div>
+        </div>
+        <div class="box has-background-white-ter">
+            <div class="level-left">
+                {{blog.content}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

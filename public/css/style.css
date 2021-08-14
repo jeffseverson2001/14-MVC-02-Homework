@@ -1,0 +1,25 @@
+/*  Anchor Tags */
+a {
+    color: #20B2AA;
+}
+
+
+/*  Classes  */
+.strongBlue {
+    color: #20B2AA;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.regularBlue {
+    color: #20B2AA;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+.headerStrong {
+    color: #20B2AA;
+    font-weight: bolder;
+    font-size: 40px;
+    padding-left: 30rem;
+}
