@@ -1,6 +1,10 @@
 <!-- Loop over each object in the blog array -->
 
-{{user_id}} {{user_name}}
+{{#if logged_in}}
+<div class="container level-right regularBlue">
+    {{user_name}} is currently logged in.
+</div>
+{{/if}}
 
 {{#each blogs as |blog| }}
 <div class="container">
@@ -19,6 +23,7 @@
             <div class="level-left">
                 {{blog.content}}
             </div>
+            <div class="">{{blog.comment}}</div>
         </div>
     </div>
 </div>
