@@ -24,7 +24,7 @@
     <div class="navbar-end">
       {{#if logged_in}}
       <a href="/" class="navbar-item has-text-dark">Homepage</a>
-      <a href="/blog" class="navbar-item has-text-dark">jBlog</a>
+      <a href="/blog/{{user_id}}" class="navbar-item has-text-dark">jBlog</a>
       <a href="/" class="navbar-item has-text-dark" id="logout-form">Logout</a>
       {{else}}
       <a href="/" class="navbar-item has-text-dark">Homepage</a>
@@ -36,6 +36,11 @@
 </header>
 
 <main>
+  {{#if logged_in}}
+  <div class="container level-right regularBlue">
+    {{user_name}} is currently logged in.
+  </div>
+  {{/if}}
   {{{ body }}}
 </main>
 
@@ -45,7 +50,7 @@
     <div class="content has-text-centered has-text-light">
       <p>
         <a href="/">Homepage</a>{{#if logged_in}} |
-        <a href="/blog">jBlog</a>
+        <a href="/blog/{{user_id}}">jBlog</a>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}

@@ -1,11 +1,15 @@
 const router = require('express').Router();
 const { Blog, Comment } = require('../../models');
 
+/*
 router.get('/', async (req, res) => {
     try {
         const blogData = await Blog.findAll({
+            include: {
+                model: Comment,
+            },
             order: [
-                ['date_created', 'DESC'],
+                ['id', 'DESC'],
             ],
         });
 
@@ -15,6 +19,36 @@ router.get('/', async (req, res) => {
         res.status(400).json(err);
     }
 });
+*/
+
+
+router.get('/:id', async (req, res) => {
+  try {
+    const projectData = await Project.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const blogs = blogData.get({ plain: true });
+    //const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    console.log(blogs);
+
+    res.render('blog', {
+      ...blogs,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      user_name: req.session.user_name,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 
 module.exports = router;

@@ -5,9 +5,8 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 
-    try {
-
-      if (req.session.logged_in) {
+  try {
+    if (req.session.logged_in) {
       var blogData = await Blog.findAll({
         include: [
           {
@@ -16,8 +15,9 @@ router.get('/', async (req, res) => {
           },
           {
             model: Comment,
-            raw: true,
             attributes: ['comment'],
+            raw: true,
+            nest: true
           },
         ],
         order: [
@@ -46,8 +46,7 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-
-    console.log(blogs);
+    //console.log(blogs);
 
     // Pass serialized data and session flag into template
     res.render('homepage', {
@@ -63,31 +62,46 @@ router.get('/', async (req, res) => {
 });
 
 
-
-/*
 router.get('/blog/:id', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    var blogData = await Blog.findAll({
+      where: {
+        user_id: req.params.id
+      },
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          attributes: ['comment', 'id'],
+          raw: true,
+          nest: true
         },
       ],
+      order: [
+        ['id', 'DESC'],
+      ],
+    });
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    console.log(blogs);
+
+    // Pass serialized data and session flag into template
+    res.render('blog', {
+      blogs,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      user_name: req.session.user_name,
     });
 
-    const project = projectData.get({ plain: true });
-
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
-    });
   } catch (err) {
     res.status(500).json(err);
   }
+
 });
 
-*/
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
