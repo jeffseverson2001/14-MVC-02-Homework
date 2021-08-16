@@ -86,7 +86,7 @@ router.get('/blog/:id', async (req, res) => {
     });
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    console.log(blogs);
+    //console.log(blogs);
 
     // Pass serialized data and session flag into template
     res.render('blog', {
@@ -121,17 +121,5 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-
-/*
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
-*/
 
 module.exports = router;

@@ -2,13 +2,27 @@
 
 <div class="container">
     <div class="level px-4 py-2">
-        <button class="level-item has-text-centered button buttonBlue is-medium" id="add-blog-button" value="">Add A New jBlog</button>
+        <button class="level-item has-text-centered button buttonBlue is-medium" id="show-blog-form-button">Add A New
+            jBlog</button>
     </div>
-    <div class="">
-        <div class="">
-            Add New Blog Here
+    <form class="box is-rounded hide" id="show-blog-form">
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" id="title-blog-new" placeholder="e. g. What is on your mind?">
+            </div>
         </div>
-    </div>
+
+        <div class="field">
+            <label class="label">Content</label>
+            <div class="control">
+                <input class="input" type="text" id="content-blog-new" placeholder="e.g. Say what is on your mind?">
+            </div>
+        </div>
+
+        <button class="button is-primary is-light" id="add-blog-button">Post</button>
+        <button class="button is-danger is-light" id="cancel-blog-button">Cancel</button>
+    </form>
 </div>
 
 {{#each blogs as |blog| }}
@@ -17,7 +31,7 @@
         <div class="box strongBlue has-background-grey-light px-4 py-2">
             <div class="level">
                 <span class="level-left">
-                    <a href="/api/blogs/{{blog.id}}">{{blog.title}}</a>
+                    <p>{{blog.title}}</p>
                 </span>
                 <span class="level-right">
                     Created by {{blog.user.username}} on {{format_date blog.date_created}}
@@ -30,8 +44,10 @@
                     {{blog.content}}
                 </span>
                 <span class="level-right">
-                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button" value="{{comment.id}}">Edit</button>
-                    <button class="button is-danger is-light is-small" id="delete-blog-button" value="{{comment.id}}">Delete</button>
+                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button"
+                        value="{{comment.id}}">Edit</button>
+                    <button class="button is-danger is-light is-small" id="delete-blog-button"
+                        value="{{comment.id}}">Delete</button>
                 </span>
             </div>
             {{#if comments}}
@@ -42,7 +58,8 @@
                         {{comment.comment}}
                     </span>
                     <span class="level-right">
-                        <button class="button is-primary is-light is-small mr-2" id="" value="{{comment.id}}">Edit</button>
+                        <button class="button is-primary is-light is-small mr-2" id=""
+                            value="{{comment.id}}">Edit</button>
                         <button class="button is-danger is-light is-small" id="" value="{{comment.id}}">Delete</button>
                     </span>
                 </div>
