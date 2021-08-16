@@ -1,12 +1,23 @@
 <!-- Loop over users object for the blog array -->
 
+<div class="container">
+    <div class="level px-4 py-2">
+        <button class="level-item has-text-centered button buttonBlue is-medium" id="add-blog-button" value="">Add A New jBlog</button>
+    </div>
+    <div class="">
+        <div class="">
+            Add New Blog Here
+        </div>
+    </div>
+</div>
+
 {{#each blogs as |blog| }}
 <div class="container">
     <div class="box mx-4 my-2">
         <div class="box strongBlue has-background-grey-light px-4 py-2">
             <div class="level">
                 <span class="level-left">
-                    <a href="/blog/{{blog.id}}">{{blog.title}}</a>
+                    <a href="/api/blogs/{{blog.id}}">{{blog.title}}</a>
                 </span>
                 <span class="level-right">
                     Created by {{blog.user.username}} on {{format_date blog.date_created}}
@@ -19,8 +30,8 @@
                     {{blog.content}}
                 </span>
                 <span class="level-right">
-                    <button class="button is-primary is-light is-small mr-2" id="" value="{{comment.id}}">Edit</button>
-                    <button class="button is-danger is-light is-small" id="" value="{{comment.id}}">Delete</button>
+                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button" value="{{comment.id}}">Edit</button>
+                    <button class="button is-danger is-light is-small" id="delete-blog-button" value="{{comment.id}}">Delete</button>
                 </span>
             </div>
             {{#if comments}}
@@ -41,3 +52,5 @@
         </div>
     </div>
     {{/each}}
+
+    <script src="/js/blog.js"></script>
