@@ -26,34 +26,33 @@ const deleteBlogHandler = async (event) => {
 const addBlogHandler = async (event) => {
     event.preventDefault();
 
-    console.log("I Am Not Shitting You.  It does not work.");
-
     const title = document.querySelector('#title-blog-new').value.trim();
     const content = document.querySelector('#content-blog-new').value.trim();
+    const user_id = document.querySelector('#content-user-id').value.trim();
 
-    /*
-    if (title && content) {
+    
+    if (title && content && user_id) {
         const response = await fetch('/api/blogs/add', {
             method: 'POST',
-            body: JSON.stringify({ title, content }),
+            body: JSON.stringify({ title, content, user_id }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            document.location.replace('/blog');
+            document.location.replace('/' + user_id);
         } else {
             alert(response.statusText);
         }
     };
-    */
+    
 };
 
 
-document.querySelector('#edit-blog-button').addEventListener('submit', editBlogHandler);
+document.querySelector('#edit-blog-button').addEventListener('click', editBlogHandler);
 
-document.querySelector('#delete-blog-button').addEventListener('submit', deleteBlogHandler);
+document.querySelector('#delete-blog-button').addEventListener('click', deleteBlogHandler);
 
-document.querySelector('#add-blog-button').addEventListener('submit', addBlogHandler);
+document.querySelector('#add-blog-button').addEventListener('click', addBlogHandler);
 
 
 document
@@ -67,3 +66,6 @@ document
     .addEventListener("click", function () {
         document.getElementById("show-blog-form").classList.add("hide");
     })    
+
+
+//console.log(user_id);

@@ -38,8 +38,7 @@ router.get('/:id', async (req, res) => {
 
 
 router.post("/add", async (req, res) => {
-    console.log("I AM AT THE ADD PART");
-    console.log(req.body);
+    //console.log(req.body);
     try {
       const blogData = await Blog.create(req.body);
   
