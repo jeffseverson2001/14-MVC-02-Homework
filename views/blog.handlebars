@@ -44,8 +44,8 @@
                     {{blog.content}}
                 </span>
                 <span class="level-right">
-                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button">Edit</button>
-                    <button class="button is-danger is-light is-small" id="delete-blog-button">Delete</button>
+                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button-{{blog.id}}" data-id="{{blog.id}}">Edit</button>
+                    <button class="button is-danger is-light is-small" id="delete-blog-button-{{blog.id}}" data-id="{{blog.id}}">Delete</button>
                 </span>
             </div>
             {{#if comments}}
@@ -55,10 +55,10 @@
                     <span class="level-left">
                         {{comment.comment}}
                     </span>
-                    <!-- <span class="level-right">
+                    <span class="level-right">
                         <button class="button is-primary is-light is-small mr-2" id="" data-id="{{comment.id}}">Edit</button>
                         <button class="button is-danger is-light is-small" id="" data-id="{{comment.id}}">Delete</button>
-                    </span> -->
+                    </span>
                 </div>
             </div>
             {{/each}}
