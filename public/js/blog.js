@@ -28,7 +28,7 @@ const addBlogHandler = async (event) => {
 
     const title = document.querySelector('#title-blog-new').value.trim();
     const content = document.querySelector('#content-blog-new').value.trim();
-    const user_id = document.querySelector('#content-user-id').value.trim();
+    const user_id = document.getElementById('show-blog-form').getAttribute("data-id");
 
     
     if (title && content && user_id) {

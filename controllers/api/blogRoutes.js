@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment', 'id'],
+                    attributes: ['comment', 'blog_id', 'id'],
                     raw: true,
                     nest: true
                 },

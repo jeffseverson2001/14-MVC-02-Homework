@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
           },
           {
             model: Comment,
-            attributes: ['comment'],
+            attributes: ['comment', 'blog_id'],
             raw: true,
             nest: true
           },
@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    //console.log(blogs);
+    //console.log(blogs[0].comments[0]);
 
     // Pass serialized data and session flag into template
     res.render('homepage', {
@@ -57,6 +57,7 @@ router.get('/', async (req, res) => {
     });
 
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
