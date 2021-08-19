@@ -2,6 +2,7 @@ const viewCommentsHandler = async (event) => {
 
 };
 
+
 document
     .getElementById("view-comments-button")
     .addEventListener("click", function () {

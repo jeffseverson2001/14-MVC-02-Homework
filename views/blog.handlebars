@@ -1,13 +1,11 @@
 <!-- Loop over users object for the blog array -->
 
-ID: {{user_id}}
-
 <div class="container">
     <div class="level px-4 py-2">
         <button class="level-item has-text-centered button buttonBlue is-medium" id="show-blog-form-button">Add A New
             jBlog</button>
     </div>
-    <form class="box is-rounded hide" id="show-blog-form" data-id="{{user_id}}">
+    <form class="box is-rounded hide" id="show-blog-form">
         <div class="field">
             <label class="label">Title</label>
             <div class="control">
@@ -46,10 +44,8 @@ ID: {{user_id}}
                     {{blog.content}}
                 </span>
                 <span class="level-right">
-                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button"
-                        value="{{comment.id}}">Edit</button>
-                    <button class="button is-danger is-light is-small" id="delete-blog-button"
-                        value="{{comment.id}}">Delete</button>
+                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button">Edit</button>
+                    <button class="button is-danger is-light is-small" id="delete-blog-button">Delete</button>
                 </span>
             </div>
             {{#if comments}}
@@ -59,11 +55,10 @@ ID: {{user_id}}
                     <span class="level-left">
                         {{comment.comment}}
                     </span>
-                    <span class="level-right">
-                        <button class="button is-primary is-light is-small mr-2" id=""
-                            value="{{comment.id}}">Edit</button>
-                        <button class="button is-danger is-light is-small" id="" value="{{comment.id}}">Delete</button>
-                    </span>
+                    <!-- <span class="level-right">
+                        <button class="button is-primary is-light is-small mr-2" id="" data-id="{{comment.id}}">Edit</button>
+                        <button class="button is-danger is-light is-small" id="" data-id="{{comment.id}}">Delete</button>
+                    </span> -->
                 </div>
             </div>
             {{/each}}
