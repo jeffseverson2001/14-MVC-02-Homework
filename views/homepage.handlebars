@@ -6,39 +6,20 @@
         <div class="box strongBlue has-background-grey-light px-4 py-2">
             <div class="level">
                 <span class="level-left">
-                    <p>{{blog.title}}</p>
+                    <!-- <p>{{blog.title}}</p> -->
+                    <a href="/blog/{{blog.id}}">{{blog.title}}</a>
                 </span>
                 <span class="level-right">
                     Created by {{blog.user.username}} on {{format_date blog.date_created}}
                 </span>
             </div>
         </div>
-
-
         <div class="box has-background-white-ter px-4 py-0">
             <div class="level subtitle is-6 px-2 py-2">
                 <span class="level-left">
                     {{blog.content}}
                 </span>
-                <span class="">
-                    {{#if comments}}
-                        <button class="button is-primary is-light is-small mr-2" id="view-comments-button" data-id="{{comment.blog_id}}">View Comments</button>
-                    {{else}}
-                        <button class="button is-primary is-light is-small mr-2" id="view-comments-button-disabled" disabled>No Comments</button>
-                    {{/if}}
-                </span>
             </div>
-            {{#if comments}}
-            {{#each comments as |comment| }}
-            <div class="box px-4 py-0 all-comments" id="show-comments" data-id="{{comment.blog_id}}">
-                <div class="level px-2 py-2">
-                    <span class="level-left">
-                        {{comment.comment}}
-                    </span>
-                </div>
-            </div>
-            {{/each}}
-            {{/if}}
         </div>
     </div>
 </div>
