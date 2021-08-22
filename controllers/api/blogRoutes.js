@@ -6,7 +6,7 @@ router.get('/:id', withAuth, async (req, res) => {
     try {
       var blogData = await Blog.findAll({
         where: {
-          user_id: req.params.id
+          id: req.params.id
         },
         include: [
           {
@@ -25,10 +25,14 @@ router.get('/:id', withAuth, async (req, res) => {
         ],
       });
 
-        const blogs = blogData.map((blog) => blog.get({ plain: true }));
+        //const blogs = blogData.map((blog) => blog.get({ plain: true }));
+        const blogs = blogData.get({ plain: true });
 
-        //console.log(blogs);
+        console.log(blogs);
 
+        console.log("I AM HERE -------------------- JEFF IS HERE");
+
+        /*
         const blogReturn = {
           blogs,
           logged_in: req.session.logged_in,
@@ -36,16 +40,14 @@ router.get('/:id', withAuth, async (req, res) => {
           user_name: req.session.user_name,
       };
 
-        res.status(200).json(blogReturn);
-
-        /*
+        res.status(200).json(blogData);
+*/
         res.render('blog', {
             blogs,
             logged_in: req.session.logged_in,
             user_id: req.session.user_id,
             user_name: req.session.user_name,
         });
-*/        
     } catch (err) {
         res.status(500).json(err);
     }

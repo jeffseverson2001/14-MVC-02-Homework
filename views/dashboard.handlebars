@@ -1,5 +1,5 @@
 <!-- Loop over users object for the blog array -->
-
+<!-- 
 <div class="container">
     <div class="level px-4 py-2">
         <button class="level-item has-text-centered button buttonBlue is-medium" id="show-blog-form-button">Add A New
@@ -24,6 +24,7 @@
         <button class="button is-danger is-light" id="cancel-blog-button">Cancel</button>
     </form>
 </div>
+-->
 
 {{#each blogs as |blog| }}
 <div class="container">
@@ -31,10 +32,10 @@
         <div class="box strongBlue has-background-grey-light px-4 py-2">
             <div class="level">
                 <span class="level-left">
-                    <p>{{blog.title}}</p>
+                    <a href="/dashboard/edit/{{blog.id}}">{{blog.title}}</a>
                 </span>
                 <span class="level-right">
-                    Created by {{blog.user.username}} on {{format_date blog.date_created}}
+                    Created on {{format_date blog.date_created}}
                 </span>
             </div>
         </div>
@@ -42,10 +43,6 @@
             <div class="level subtitle is-6 px-2 py-2">
                 <span class="level-left">
                     {{blog.content}}
-                </span>
-                <span class="level-right">
-                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button-{{blog.id}}" data-id="{{blog.id}}">Edit</button>
-                    <button class="button is-danger is-light is-small" id="delete-blog-button-{{blog.id}}" data-id="{{blog.id}}">Delete</button>
                 </span>
             </div>
             {{#if comments}}
@@ -55,10 +52,6 @@
                     <span class="level-left">
                         {{comment.comment}}
                     </span>
-                    <span class="level-right">
-                        <button class="button is-primary is-light is-small mr-2" id="" data-id="{{comment.id}}">Edit</button>
-                        <button class="button is-danger is-light is-small" id="" data-id="{{comment.id}}">Delete</button>
-                    </span>
                 </div>
             </div>
             {{/each}}
@@ -67,4 +60,4 @@
     </div>
     {{/each}}
 
-    <script src="/js/blog.js"></script>
+    <script src="/js/dashboard.js"></script>
