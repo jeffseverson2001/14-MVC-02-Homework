@@ -30,18 +30,8 @@ router.get('/:id', withAuth, async (req, res) => {
 
         console.log(blogs);
 
-        console.log("I AM HERE -------------------- JEFF IS HERE");
+        //console.log("I AM HERE -------------------- JEFF IS HERE");
 
-        /*
-        const blogReturn = {
-          blogs,
-          logged_in: req.session.logged_in,
-          user_id: req.session.user_id,
-          user_name: req.session.user_name,
-      };
-
-        res.status(200).json(blogData);
-*/
         res.render('blog', {
             blogs,
             logged_in: req.session.logged_in,

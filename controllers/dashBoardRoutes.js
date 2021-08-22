@@ -66,9 +66,11 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
         const blogs = blogData.get({ plain: true });
 
+        console.log("HI");
         console.log(blogs);
+
         res.render('blog', {
-            ...blogs,
+            blogs,
             logged_in: req.session.logged_in,
             user_id: req.session.user_id,
             user_name: req.session.user_name,
