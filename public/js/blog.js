@@ -6,11 +6,12 @@ const editBlogHandler = async (event) => {
 
     const title = document.querySelector('#title-blog-edit').value.trim();
     const content = document.querySelector('#content-blog-edit').value.trim();
+    const user_id = document.getElementById('show-blog-form').getAttribute("data-id");
 
-    if (title && content) {
+    if (title && content && user_id) {
         const response = await fetch('/api/blogs/', {
             method: 'POST',
-            body: JSON.stringify({ title, content }),
+            body: JSON.stringify({ title, content, user_id }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -69,6 +70,7 @@ document
     .addEventListener("click", function () {
         document.getElementById("show-blog-form").classList.add("hide");
     })    
+
 
 //  Blog Editor
 document

@@ -1,36 +1,51 @@
 const router = require('express').Router();
 const { Blog, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
-        const blogData = await Blog.findAll({
-            where: {
-                id: req.params.id
-            },
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['comment', 'blog_id', 'id'],
-                    raw: true,
-                    nest: true
-                },
-            ],
-        });
+      var blogData = await Blog.findAll({
+        where: {
+          user_id: req.params.id
+        },
+        include: [
+          {
+            model: User,
+            attributes: ['username'],
+          },
+          {
+            model: Comment,
+            attributes: ['comment', 'id', 'blog_id'],
+            raw: true,
+            nest: true
+          },
+        ],
+        order: [
+          ['id', 'DESC'],
+        ],
+      });
 
         const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
         //console.log(blogs);
 
+        const blogReturn = {
+          blogs,
+          logged_in: req.session.logged_in,
+          user_id: req.session.user_id,
+          user_name: req.session.user_name,
+      };
+
+        res.status(200).json(blogReturn);
+
+        /*
         res.render('blog', {
-            ...blogs,
+            blogs,
             logged_in: req.session.logged_in,
             user_id: req.session.user_id,
             user_name: req.session.user_name,
         });
+*/        
     } catch (err) {
         res.status(500).json(err);
     }

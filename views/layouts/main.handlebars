@@ -24,7 +24,7 @@
     <div class="navbar-end">
       {{#if logged_in}}
       <a href="/" class="navbar-item has-text-dark">Homepage</a>
-      <a href="/blog/{{user_id}}" class="navbar-item has-text-dark">jBlog</a>
+      <a href="/api/blogs/{{user_id}}" class="navbar-item has-text-dark">jBlog</a>
       <a href="/" class="navbar-item has-text-dark" id="logout-form">Logout</a>
       {{else}}
       <a href="/" class="navbar-item has-text-dark">Homepage</a>
