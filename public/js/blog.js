@@ -5,12 +5,16 @@ const editBlogHandler = async (event) => {
 
     const title = document.querySelector('#title-blog-edit').value.trim();
     const content = document.querySelector('#content-blog-edit').value.trim();
-    const user_id = document.getElementById('show-blog-form').getAttribute("data-id");
+    const blog_id = document.getElementById('show-edit-blog-form').getAttribute("data-id");
+    const user_id = document.getElementById('edit-blog-button').getAttribute("data-id");
 
-    if (title && content && user_id) {
-        const response = await fetch(`/api/blogs/edit/${user_id}`, {
+    console.log(blog_id);
+    console.log(user_id);
+
+    if (title && content) {
+        const response = await fetch(`/api/blogs/edit/${blog_id}`, {
             method: 'POST',
-            body: JSON.stringify({ title, content, user_id }),
+            body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -62,6 +66,7 @@ document.querySelector('#add-blog-button').addEventListener('click', addBlogHand
 document
     .getElementById("show-edit-blog-form-button")
     .addEventListener("click", function () {
+        document.getElementById("show-blog-form").classList.add("hide");
         document.getElementById("show-edit-blog-form").classList.remove("hide");
     });
 
@@ -75,6 +80,7 @@ document
 document
     .getElementById("show-blog-form-button")
     .addEventListener("click", function () {
+        document.getElementById("show-edit-blog-form").classList.add("hide");
         document.getElementById("show-blog-form").classList.remove("hide");
     });
 
