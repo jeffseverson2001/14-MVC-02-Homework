@@ -8,15 +8,18 @@ const editBlogHandler = async (event) => {
     const blog_id = document.getElementById('show-edit-blog-form').getAttribute("data-id");
     const user_id = document.getElementById('edit-blog-button').getAttribute("data-id");
 
+    console.log(title);
+    console.log(content);
     console.log(blog_id);
     console.log(user_id);
 
     if (title && content) {
         const response = await fetch(`/api/blogs/edit/${blog_id}`, {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
         });
+
 
         if (response.ok) {
             document.location.replace(`/dashboard/${user_id}`);
@@ -26,11 +29,32 @@ const editBlogHandler = async (event) => {
     }
 };
 
-/*
-const deleteBlogHandler = async (event) => {
 
+const deleteBlogHandler = async (event) => {
+    event.preventDefault();
+    
+    const blog_id = document.getElementById('show-edit-blog-form').getAttribute("data-id");
+    const user_id = document.getElementById('delete-blog-button').getAttribute("data-id");
+
+    console.log(blog_id);
+    console.log(user_id);
+
+    if (blog_id) {
+        const response = await fetch(`/api/blogs/delete/${blog_id}`, {
+            method: 'DELETE',
+            body: JSON.stringify({ blog_id }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+
+        if (response.ok) {
+            document.location.replace(`/dashboard/${user_id}`);
+        } else {
+            alert(response.statusText);
+        }
+    }
 };
-*/
+
 
 const addBlogHandler = async (event) => {
     event.preventDefault();
@@ -58,7 +82,7 @@ const addBlogHandler = async (event) => {
 
 document.querySelector('#edit-blog-button').addEventListener('click', editBlogHandler);
 
-//document.querySelector('#delete-blog-button').addEventListener('click', deleteBlogHandler);
+document.querySelector('#delete-blog-button').addEventListener('click', deleteBlogHandler);
 
 document.querySelector('#add-blog-button').addEventListener('click', addBlogHandler);
 
@@ -90,4 +114,5 @@ document
         document.getElementById("show-blog-form").classList.add("hide");
     }) ;  
 
-    
+
+

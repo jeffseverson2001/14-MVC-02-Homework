@@ -66,8 +66,8 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
         const blogs = blogData.get({ plain: true });
 
-        console.log("HI");
-        console.log(blogs);
+        //console.log("HI");
+        //console.log(blogs);
 
         res.render('blog', {
             blogs,
@@ -81,6 +81,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 
 });
+
 
 
 module.exports = router;

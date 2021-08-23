@@ -30,8 +30,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
         console.log(blogs);
 
-        //console.log("I AM HERE -------------------- JEFF IS HERE");
-
         res.render('blog', {
             blogs,
             logged_in: req.session.logged_in,
@@ -60,8 +58,8 @@ router.post("/add", async (req, res) => {
   });
 
 
-  router.put('/edit/:id', async (req, res) => {
-    console.Bloglog("AT THE EDIT");
+  router.put('/edit/:id',  withAuth, async (req, res) => {
+    console.log("AT THE EDIT");
     console.log(req.body);
     try {
       const blogData = await Blog.update(req.body, {
@@ -76,7 +74,7 @@ router.post("/add", async (req, res) => {
   });
 
 
-  router.delete('/delete/:id', async (req, res) => {
+  router.delete('/delete/:id',  withAuth, async (req, res) => {
     try {
       const blogData = await Blog.destroy({
         where: {
