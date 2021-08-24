@@ -62,12 +62,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-router.get('/blog/:id', async (req, res) => {
+/*
+router.get('/blog/:id', withAuth, async (req, res) => {
   try {
     var blogData = await Blog.findAll({
       where: {
-        user_id: req.params.id
+        id: req.params.id
       },
       include: [
         {
@@ -102,11 +102,11 @@ router.get('/blog/:id', async (req, res) => {
   }
 
 });
-
+*/
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('homepage');
+    res.redirect('blog');
     return;
   }
   res.render('signup');
@@ -116,7 +116,7 @@ router.get('/signup', (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('homepage');
+    res.redirect('blog');
     return;
   }
   res.render('login');

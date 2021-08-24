@@ -1,4 +1,29 @@
-<!-- Loop over users object for the blog array -->
+<!--  This is the Blog Page  -->
+
+<div class="container">
+    <div class="level px-4 py-2">
+        <button class="level-item has-text-centered button buttonBlue is-medium" id="show-edit-blog-form-button">Edit Your jBlog</button>
+    </div>
+    <form class="box is-rounded hide" id="show-edit-blog-form" data-id="{{blogs.id}}">
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" id="title-blog-edit" value="{{blogs.title}}" data-id="{{blogs.title}}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Content</label>
+            <div class="control">
+                <input class="input" type="text" id="content-blog-edit" value="{{blogs.content}}" data-id="{{blogs.content}}">
+            </div>
+        </div>
+
+        <button class="button is-primary is-light" id="edit-blog-button" data-id="{{user_id}}">Change</button>
+        <button class="button is-danger is-light" id="cancel-edit-blog-button">Cancel</button>
+        <button class="button is-danger" id="delete-blog-button" data-id="{{user_id}}">Delete</button>
+    </form>
+</div>
 
 <div class="container">
     <div class="level px-4 py-2">
@@ -20,51 +45,16 @@
             </div>
         </div>
 
-        <button class="button is-primary is-light" id="add-blog-button">Post</button>
+        <button class="button is-primary is-light" id="add-blog-button" data-id="{{user_id}}">Post</button>
         <button class="button is-danger is-light" id="cancel-blog-button">Cancel</button>
     </form>
 </div>
 
-{{#each blogs as |blog| }}
-<div class="container">
-    <div class="box mx-4 my-2">
-        <div class="box strongBlue has-background-grey-light px-4 py-2">
-            <div class="level">
-                <span class="level-left">
-                    <p>{{blog.title}}</p>
-                </span>
-                <span class="level-right">
-                    Created by {{blog.user.username}} on {{format_date blog.date_created}}
-                </span>
-            </div>
-        </div>
-        <div class="box has-background-white-ter px-4 py-0">
-            <div class="level subtitle is-6 px-2 py-2">
-                <span class="level-left">
-                    {{blog.content}}
-                </span>
-                <span class="level-right">
-                    <button class="button is-primary is-light is-small mr-2" id="edit-blog-button-{{blog.id}}" data-id="{{blog.id}}">Edit</button>
-                    <button class="button is-danger is-light is-small" id="delete-blog-button-{{blog.id}}" data-id="{{blog.id}}">Delete</button>
-                </span>
-            </div>
-            {{#if comments}}
-            {{#each comments as |comment| }}
-            <div class="box px-4 py-0">
-                <div class="level px-2 py-2">
-                    <span class="level-left">
-                        {{comment.comment}}
-                    </span>
-                    <span class="level-right">
-                        <button class="button is-primary is-light is-small mr-2" id="" data-id="{{comment.id}}">Edit</button>
-                        <button class="button is-danger is-light is-small" id="" data-id="{{comment.id}}">Delete</button>
-                    </span>
-                </div>
-            </div>
-            {{/each}}
-            {{/if}}
-        </div>
-    </div>
-    {{/each}}
 
-    <script src="/js/blog.js"></script>
+<div class="container">
+    <div class="level px-4 py-2">
+        <a href="/dashboard/{{user_id}}">Back to Dashboard</a>
+    </div>
+</div>
+
+<script src="/js/blog.js"></script>
