@@ -59,8 +59,6 @@ router.post("/add", async (req, res) => {
 
 
   router.put('/edit/:id',  withAuth, async (req, res) => {
-    console.log("AT THE EDIT");
-    console.log(req.body);
     try {
       const blogData = await Blog.update(req.body, {
         where: {

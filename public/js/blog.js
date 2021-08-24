@@ -8,11 +8,6 @@ const editBlogHandler = async (event) => {
     const blog_id = document.getElementById('show-edit-blog-form').getAttribute("data-id");
     const user_id = document.getElementById('edit-blog-button').getAttribute("data-id");
 
-    console.log(title);
-    console.log(content);
-    console.log(blog_id);
-    console.log(user_id);
-
     if (title && content) {
         const response = await fetch(`/api/blogs/edit/${blog_id}`, {
             method: 'PUT',
@@ -36,8 +31,6 @@ const deleteBlogHandler = async (event) => {
     const blog_id = document.getElementById('show-edit-blog-form').getAttribute("data-id");
     const user_id = document.getElementById('delete-blog-button').getAttribute("data-id");
 
-    console.log(blog_id);
-    console.log(user_id);
 
     if (blog_id) {
         const response = await fetch(`/api/blogs/delete/${blog_id}`, {

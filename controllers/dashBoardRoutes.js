@@ -83,5 +83,44 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 });
 
 
+router.get('/comments/:id', withAuth, async (req, res) => {
+    console.log("AT THE COMMENTS");
+    try {
+        var blogData = await Blog.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment', 'id', 'blog_id', 'date_created'],
+                    raw: true,
+                    nest: true
+                },
+            ],
+            order: [
+                ['id', 'DESC'],
+            ],
+        });
+
+        const blogs = blogData.get({ plain: true });
+
+        res.render('comments', {
+            blogs,
+            logged_in: req.session.logged_in,
+            user_id: req.session.user_id,
+            user_name: req.session.user_name,
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+});
+
 
 module.exports = router;
