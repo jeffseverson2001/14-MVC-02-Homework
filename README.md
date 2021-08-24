@@ -19,7 +19,8 @@ npm i
 
 ## Usage
 
-Setup and/or Log in to add, edit and comment on blogs.
+Sign up and/or Log in to add, edit and comment on blogs.
+
 ![alt Blog Home Page](public/images/Blog_ReadMe.jpg)
 
 ## Credits
@@ -35,4 +36,4 @@ https://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp
 
 - For additional help or questions about collaboration, please reach out to jeff@jefflizseverson.com
 
-- Follow me on Github at [https://github.com/jeffseverson2001](http://github.com/https://github.com/jeffseverson2001)
+- Follow me on Github at [https://github.com/jeffseverson2001](http://github.com/jeffseverson2001)
