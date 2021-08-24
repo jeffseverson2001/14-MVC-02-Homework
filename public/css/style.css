@@ -31,3 +31,7 @@ a {
 .hide {
     display: none;
 }
+
+.blogContent {
+    font-weight: bolder;
+}

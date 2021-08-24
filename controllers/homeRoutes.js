@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
           },
           {
             model: Comment,
-            attributes: ['comment', 'blog_id'],
+            attributes: ['comment', 'blog_id', 'date_created'],
             raw: true,
             nest: true
           },
@@ -103,6 +103,14 @@ router.get('/blog/:id', withAuth, async (req, res) => {
 
 });
 */
+
+router.get('/comment/:id', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('blog');
+    return;
+  }
+  res.render('signup');
+});
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
