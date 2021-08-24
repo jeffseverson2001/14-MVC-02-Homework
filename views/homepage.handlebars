@@ -6,8 +6,8 @@
         <div class="box strongBlue has-background-grey-light px-4 py-2">
             <div class="level">
                 <span class="level-left">
-                    <p>{{blog.title}}</p>
-                    <!-- <a href="/dashboad/{{blog.id}}">{{blog.title}}</a> -->
+                    <!-- <p>{{blog.title}}</p> -->
+                    <a href="/comments/{{blog.id}}">{{blog.title}}</a>
                 </span>
                 <span class="level-right">
                     Created by {{blog.user.username}} on {{format_date blog.date_created}}
@@ -21,6 +21,22 @@
                 </span>
             </div>
         </div>
+        {{#if comments}}
+        {{#each comments as |comment| }}
+        <div class="box px-4 py-0">
+            <div class="level px-2 py-2">
+                <span class="level-left">
+                    {{comment.comment}}
+                </span>
+                {{#if logged_in}}
+                <span class="level-right">
+                    <button class="button is-primary is-light" id="add-comment-button" data-id="{{user_id}}">Change</button>
+                </span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
     </div>
 </div>
 {{/each}}
