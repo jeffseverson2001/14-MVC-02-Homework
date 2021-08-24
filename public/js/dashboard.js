@@ -22,7 +22,9 @@ const addBlogHandler = async (event) => {
     
 };
 
+
 document.querySelector('#add-blog-button').addEventListener('click', addBlogHandler);
+
 
 document
     .getElementById("show-blog-form-button")
