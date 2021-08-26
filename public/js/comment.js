@@ -23,7 +23,9 @@ const addCommentHandler = async (event) => {
 const deleteCommentHandler = async (event) => {
     event.preventDefault();
     
-    const comment_id = document.getElementById('delete-comment-button').getAttribute("data-id");
+    //console.log(event);
+
+    const comment_id = event.target.attributes["data-id"].value;
 
     if (comment_id) {
         const response = await fetch(`/api/comments/delete/${comment_id}`, {
@@ -44,7 +46,10 @@ const deleteCommentHandler = async (event) => {
 
 document.querySelector('#add-comment-button').addEventListener('click', addCommentHandler);
 
-document.querySelector('#delete-comment-button').addEventListener('click', deleteCommentHandler);
+
+document.querySelectorAll('.delete-comment-button').forEach((element) => {
+    element.addEventListener('click', deleteCommentHandler);
+});
 
 
 
